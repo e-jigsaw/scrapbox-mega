@@ -5,7 +5,7 @@ const from = JSON.parse(
 );
 const to = JSON.parse(readFileSync(`./data/${process.env.TO}.json`).toString());
 
-const cond = (title) => /^tumblr\-/.test(title);
+const cond = (title) => /([a-f]|[0-9]){32}/.test(title);
 
 const candidate = from.pages.filter((page) => cond(page.title));
 to.pages = [...to.pages, ...candidate];
